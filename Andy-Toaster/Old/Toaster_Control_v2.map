@@ -1,0 +1,212 @@
+;/////////////////////////////////////////////////////////////////////////////////
+;// Code Generator: BoostC Compiler - http://www.sourceboost.com
+;// Version       : 7.05
+;// License Type  : Pro License
+;// Limitations   : PIC12,PIC16 max code size:Unlimited, max RAM banks:Unlimited
+;/////////////////////////////////////////////////////////////////////////////////
+
+
+Map File
+
+Program Memory usage
+====================
+
+Address  Length   Unique Name      Name
+-------  ------   -----------      ----
+00000000:00000004 _resetvector     _resetvector  
+00000004:0000000C _interruptVector _interruptVector  
+00000010:0000000C delay_ms_00000   delay_ms(unsigned char)  
+0000001C:00000019 delay_ms_00001   delay_ms(unsigned short)  
+00000035:0000000A int_save_r_00019 int_save_registers(void)  
+0000003F:00000008 int_restor_0001A int_restore_registers(void)  
+00000047:00000016 __mul_8u_8_00006 __mul_8u_8u(unsigned char,unsigned char)  
+0000005D:0000001F __rem_16_1_00004 __rem_16_16(unsigned short,unsigned short)  
+0000007C:00000021 __div_16_1_00003 __div_16_16(unsigned short,unsigned short)  
+0000009D:0000001C LCD_wait_00000   LCD_wait(void)  
+000000B9:00000035 send_cmd_00000   send_cmd(unsigned char,unsigned char)  
+000000EE:00000031 convert_in_00014 convert_int(unsigned short)  
+0000011F:0000001D bin2hex_00000    bin2hex(unsigned char)  
+0000013C:00000034 update_dis_00013 update_display(unsigned short,unsigned char)  
+00000170:00000005 serial_put_00016 serial_putchar(unsigned char)  
+00000175:00000016 printf_lcd_00000 printf_lcd(unsigned char*)  
+0000018B:00000028 onboard_ee_00012 onboard_eewrite(unsigned char,unsigned char)  
+000001B3:0000000C onboard_ee_00011 onboard_eeread(unsigned char)  
+000001BF:0000002A init_lcd_00000   init_lcd(void)  
+000001E9:00000023 __mul_32u__0000F __mul_32u_32u(unsigned long,unsigned long)  
+0000020C:0000002D __mul_16s__0000E __mul_16s_16s__16(signed short,signed short)  
+00000239:00000039 __div_32_3_00001 __div_32_32(unsigned long,unsigned long)  
+00000272:000000A1 speed_butt_00015 speed_button(unsigned short,unsigned char,unsigned char)  
+00000313:0000001B serial_put_00017 serial_putnumber(unsigned short)  
+0000032E:0000000F send_tunit_00018 send_tunits(void)  
+0000033D:00000010 put_edata_00000  put_edata(unsigned char,unsigned short)  
+0000034D:0000004F proj_value_00000 proj_value(signed short,signed short,signed short,signed short)  
+0000039C:00000018 mod_digit_00000  mod_digit(unsigned char,unsigned char)  
+000003B4:0000000C init_state_00000 init_state(unsigned char,unsigned char)  
+000003C0:000000E9 get_temp_00000   get_temp(void)  
+000004A9:00000015 get_edata_00000  get_edata(unsigned char)  
+000004BE:00000097 boot_up_00000    boot_up(void)  
+00000555:00000019 __mul_16u__0000C __mul_16u_16u__16(unsigned short,unsigned short)  
+0000056E:00000011 __div_8_8_00000  __div_8_8(unsigned char,unsigned char)  
+0000057F:0000099F main             main(void)  
+00000F1E:0000001A _startup_00000   _startup(void)  
+00000F38:0000003A interrupt        interrupt(void)  
+00000F72:0000008E *Unused Block 
+
+Register usage
+==============
+
+Address  Bit Lengh Bit Mask   Unique Name                      Name
+-------  --------- --------   -----------                      ----
+00000000:00000008             gbl_indf                         indf
+00000001:00000008             gbl_tmr0                         tmr0
+00000002:00000008             gbl_pcl                          pcl
+00000003:00000008             gbl_status                       status
+00000004:00000008             gbl_fsr                          fsr
+00000005:00000008             gbl_porta                        porta
+00000006:00000008             gbl_portb                        portb
+0000000A:00000008             gbl_pclath                       pclath
+0000000B:00000008             gbl_intcon                       intcon
+0000000C:00000008             gbl_pir1                         pir1
+0000000D:00000008             gbl_pir2                         pir2
+0000000E:00000008             gbl_tmr1l                        tmr1l
+0000000F:00000008             gbl_tmr1h                        tmr1h
+00000010:00000008             gbl_t1con                        t1con
+00000011:00000008             gbl_tmr2                         tmr2
+00000012:00000008             gbl_t2con                        t2con
+00000013:00000008             gbl_sspbuf                       sspbuf
+00000014:00000008             gbl_sspcon                       sspcon
+00000015:00000008             gbl_ccpr1l                       ccpr1l
+00000016:00000008             gbl_ccpr1h                       ccpr1h
+00000017:00000008             gbl_ccp1con                      ccp1con
+00000018:00000008             gbl_rcsta                        rcsta
+00000019:00000008             gbl_txreg                        txreg
+0000001A:00000008             gbl_rcreg                        rcreg
+0000001E:00000008             gbl_adresh                       adresh
+0000001F:00000008             gbl_adcon0                       adcon0
+00000020:00000018             Int1BContext                     Int1BContext
+00000023:00000010             gbl_total_seconds                total_seconds
+00000025:00000010             gbl_display_seconds              display_seconds
+00000027:00000010             gbl_step_seconds                 step_seconds
+00000029:00000010             gbl_a_temp1                      a_temp1
+0000002B:00000010             gbl_a_temp2                      a_temp2
+0000002D:00000010             gbl_tot_err                      tot_err
+0000002F:00000010             gbl_proj_actual                  proj_actual
+00000031:00000010             gbl_proj_temp                    proj_temp
+00000033:00000010             gbl_proj_err                     proj_err
+00000035:00000010             gbl_step_time                    step_time
+00000037:00000010             gbl_step_temp                    step_temp
+00000039:00000010             gbl_prev_step_temp               prev_step_temp
+0000003B:00000010             gbl_set_temp                     set_temp
+0000003D:00000010             gbl_two_second_timer             two_second_timer
+0000003F:00000008             gbl_m_seconds                    m_seconds
+00000040:00000008             gbl_eeaddress                    eeaddress
+00000041:00000008             gbl_err_num                      err_num
+00000042:00000008             gbl_W_TEMP                       W_TEMP
+00000043:00000008             gbl_STATUS_TEMP                  STATUS_TEMP
+00000044:00000008             gbl_step_number                  step_number
+00000045:00000008             gbl_PCLATH_TEMP                  PCLATH_TEMP
+00000046:00000008             gbl_timer_on                     timer_on
+00000047:00000008             gbl_temp_on                      temp_on
+00000048:00000008             gbl_relay_on                     relay_on
+00000049:00000008             gbl_eeaddoffset                  eeaddoffset
+0000004A:00000008             gbl_cur_pos                      cur_pos
+0000004B:00000008             gbl_digit_100                    digit_100
+0000004C:00000008             gbl_digit_10                     digit_10
+0000004D:00000008             gbl_digit_1                      digit_1
+0000004E:00000008             gbl_choice                       choice
+0000004F:00000008             gbl_button_push                  button_push
+00000050:00000008             gbl_button_release               button_release
+00000051:00000008             gbl_long_push                    long_push
+00000052:00000008             gbl_update_flag                  update_flag
+00000053:00000008             gbl_menu_index                   menu_index
+00000054:00000008             gbl_state                        state
+00000055:00000008             gbl_prev_state                   prev_state
+00000056:00000008             gbl_mode                         mode
+00000057:00000008             gbl_prev_mode                    prev_mode
+00000058:00000008             gbl_set_mode                     set_mode
+00000059:00000008             gbl_timer_int                    timer_int
+0000005A:00000008             gbl_temp_units                   temp_units
+0000005B:00000008             gbl_relay_LED                    relay_LED
+0000005C:00000008             gbl_t_inc                        t_inc
+0000005D:00000008             gbl_clock_cal                    clock_cal
+0000005E:00000008             gbl_tc                           tc
+0000005F:00000008             CompTempVar182                  
+00000060:00000008             CompTempVar183                  
+00000061:00000008             main_24_value                    value
+00000062:00000008             CompTempVar289                  
+00000063:00000008             CompTempVar290                  
+00000064:00000088             CompTempVar307                  
+00000065:00000008             __div_8_8_00000_arg_a            a
+00000066:00000008             __div_8_8_00000_arg_b            b
+00000067:00000010             __mul_16u__0000C_arg_a           a
+00000068:00000008             CompTempVar269                  
+00000069:00000010             __mul_16u__0000C_arg_b           b
+0000006A:00000008             CompTempVar271                  
+0000006B:00000010             __rem_16_1_00004_arg_a           a
+0000006C:00000008             CompTempVar260                  
+0000006D:00000010             __rem_16_1_00004_arg_b           b
+0000006E:00000008             CompTempVar262                  
+0000006F:00000010             __mul_16s__0000E_arg_a           a
+00000070:00000008             CompTempVar264                  
+00000071:00000010             __mul_16s__0000E_arg_b           b
+00000072:00000008             __mul_16u__0000C_1_i             i
+00000073:00000010             __mul_16u__0000C_1_t             t
+00000074:00000008             CompTempVarRet317                $ret
+00000075:00000010             CompTempVarRet554                $ret
+00000076:00000008             send_cmd_00000_arg_c             c
+00000077:00000010             __div_16_1_00003_arg_b           b
+00000078:00000001  0b00000001 LCD_wait_00000_1_i               i
+00000079:00000008             delay_ms_00000_arg_del           del
+0000007A:00000008             CompTempVar172                  
+0000007B:00000008             CompTempVar173                  
+0000007C:00000008             CompTempVar174                  
+0000007D:00000008             __div_32_3_00001_1_i             i
+0000007E:00000008             CompTempVar176                  
+0000007F:00000008             Int1Context                      Int1Context
+00000081:00000008             gbl_option_reg                   option_reg
+00000085:00000008             gbl_trisa                        trisa
+00000086:00000008             gbl_trisb                        trisb
+0000008C:00000008             gbl_pie1                         pie1
+0000008D:00000008             gbl_pie2                         pie2
+0000008E:00000008             gbl_pcon                         pcon
+0000008F:00000008             gbl_osccon                       osccon
+00000090:00000008             gbl_osctune                      osctune
+00000092:00000008             gbl_pr2                          pr2
+00000093:00000008             gbl_sspadd                       sspadd
+00000094:00000008             gbl_sspstat                      sspstat
+00000098:00000008             gbl_txsta                        txsta
+00000099:00000008             gbl_spbrg                        spbrg
+0000009B:00000008             gbl_ansel                        ansel
+0000009C:00000008             gbl_cmcon                        cmcon
+0000009D:00000008             gbl_cvrcon                       cvrcon
+0000009E:00000008             gbl_adresl                       adresl
+0000009F:00000008             gbl_adcon1                       adcon1
+000000A0:00000020             __mul_32u__0000F_arg_b           b
+000000A1:00000010             __mul_16s__0000E_1_t             t
+000000A3:00000010             CompTempVarRet560                $ret
+000000A4:00000010             CompTempVarRet313                $ret
+000000A5:00000008             CompTempVar149                  
+000000A6:00000008             __mul_32u__0000F_1_i             i
+000000A7:00000020             CompTempVarRet563                $ret
+000000A8:00000020             CompTempVarRet309                $ret
+000000AC:00000008             __mul_8u_8_00006_arg_a           a
+000000AD:00000008             __mul_8u_8_00006_arg_b           b
+000000AE:00000008             CompTempVar178                  
+000000AF:00000008             CompTempVar179                  
+000000B0:00000008             __mul_8u_8_00006_1_i             i
+000000B1:00000010             __mul_8u_8_00006_1_t             t
+000000B3:00000010             CompTempVarRet551                $ret
+00000105:00000008             gbl_wdtcon                       wdtcon
+0000010C:00000008             gbl_eedata                       eedata
+0000010D:00000008             gbl_eeadr                        eeadr
+0000010E:00000008             gbl_eedath                       eedath
+0000010F:00000008             gbl_eeadrh                       eeadrh
+0000018C:00000008             gbl_eecon1                       eecon1
+0000018D:00000008             gbl_eecon2                       eecon2
+
+
+Memory Usage Report
+===================
+RAM available:368 bytes, used:117 bytes (31.8%), free:251 bytes (68.2%), 
+Heap size:251 bytes, Heap max single alloc:95 bytes
+ROM available:4096 words, used:3954 words (96.6%), free:142 words (3.4%)
