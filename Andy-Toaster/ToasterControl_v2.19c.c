@@ -1,8 +1,7 @@
-/*	original code
-    4-26-05
-    Copyright Spark Fun Electronics© 2005
-    Nathan Seidle 
-    spark@sparkfun.com
+/*	original code   4-26-05
+	Copyright Spark Fun Electronics© 2005
+	Nathan Seidle 
+	spark@sparkfun.com
 
 	Version 1.01 of code:
 	Copyright Kit Ryan ©2008
@@ -12,10 +11,10 @@
 	Version 2.1 of code:
 	Copyright Andy Goss ©2011
 	Andy Goss 12/29/2011
-	andy@pcindiana.com
+	pcindiana@gmail.com
 */
 /* 
-   This version 2.19b of the code starts automatically with Program 1 selected, 
+   This version 2.19c of the code starts automatically with Program 1 selected, 
    requiring the user to only press the CS1 button to start the program.
    Program 1 is setup to reflow sn96.5-Ag3-Cu0.5 lead-free solder paste
 */
@@ -34,31 +33,31 @@
 //####need following statement if boot loader is not used. Otherwise, boot loader sets config bits********
 #pragma DATA _CONFIG1, _CP_OFF & _INTRC_IO & _CCP1_RB0 & _DEBUG_OFF & _WRT_PROTECT_OFF & _CPD_OFF & _WDT_OFF & _PWRTE_ON & _LVP_OFF & _BODEN_OFF
 #pragma DATA _EEPROM, 	0x00,0x0F,0x00,0x28,0x00,0x5A,0x00,0x8C,0x00,0x5A,0x00,0xC8,0x00,0x1E,0x00,0xF0,0x00,0x3C,0x00,0x8C,
-						0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,
-						0x00,0x0F,0x00,0x28,0x00,0x5A,0x00,0x96,0x00,0x5A,0x00,0xB4,0x00,0x1E,0x00,0xD7,0x00,0x3C,0x00,0x96,
-						0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,
-						0x14,0x01,0x01,0x04,0x04,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00;
-						//These locations are for Programmed time/temp values.  0-9 (10 total) steps x 2 integers each (2 bytes/int) for time
-						//and temp = 40 bytes per program x 2 = 80 bytes (locations 0 - 79).  
-						//
-						//Program 1 is for Sn96.5Ag3Cu0.5 Solder Paste
-						//Program 1 steps 0-4 are third line
-						//Step0:15seconds@40C,Step1:90seconds@140C,Step2:90seconds@200C,Step3:30seconds@240C,Step4:60seconds@140C
-						//Program 1 steps 5-9 are fourth line
-						//Step5:0seconds@0C,Step6:0seconds@0C,Step7:0seconds@0C,Step8:0seconds@0C,Step9:0seconds@0C
-						//
-						//Program 2 is for Sn63Pb37 or Sn62Pb36Ag02 Solder Paste
-						//Program 2 steps 0-4 are first line
-						//Step0:240seconds@240C,Step1:90seconds@150C,Step2:90seconds@180C,Step3:30seconds@215C,Step4:60seconds@150C
-						//Program 2 steps 5-9 are second line
-						//Step5:0seconds@0C,Step6:0seconds@0C,Step7:0seconds@0C,Step8:0seconds@0C,Step9:0seconds@0C
-						//	
-						//Following that on the fifth line, are the stored 'settings' variables which can be changed using Setup or Calibrate functions:
-						//	80 = (1 byte) tc (time constant of the oven heating cycle in seconds.  Default = 20s) Andy changed back to 20s
-						//  81 = (1 byte) temp_units on display (F or C - default: C = 0x01)
-						//  82 = (1 byte) relay_LED  (on or off with relay activation. Default = ON = 0x01)
-						//	83 = (1 byte) t_inc (adjusts the step rate for speed_button from 1 to 10 second/degree steps. Default = 5)
-						//	84 = (1 byte) clock_cal  (adjust the master INTRC clock around 8MHz +/- 2% (the room temp accuracy range) Default = 5)
+			0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,
+			0x00,0x0F,0x00,0x28,0x00,0x5A,0x00,0x96,0x00,0x5A,0x00,0xB4,0x00,0x1E,0x00,0xD7,0x00,0x3C,0x00,0x96,
+			0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,
+			0x14,0x01,0x01,0x04,0x04,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00;
+			//These locations are for Programmed time/temp values.  0-9 (10 total) steps x 2 integers each (2 bytes/int) for time
+			//and temp = 40 bytes per program x 2 = 80 bytes (locations 0 - 79).  
+			//
+			//Program 1 is for Sn96.5Ag3Cu0.5 Solder Paste
+			//Program 1 steps 0-4 are third line
+			//Step0:15seconds@40C,Step1:90seconds@140C,Step2:90seconds@200C,Step3:30seconds@240C,Step4:60seconds@140C
+			//Program 1 steps 5-9 are fourth line
+			//Step5:0seconds@0C,Step6:0seconds@0C,Step7:0seconds@0C,Step8:0seconds@0C,Step9:0seconds@0C
+			//
+			//Program 2 is for Sn63Pb37 or Sn62Pb36Ag02 Solder Paste
+			//Program 2 steps 0-4 are first line
+			//Step0:240seconds@240C,Step1:90seconds@150C,Step2:90seconds@180C,Step3:30seconds@215C,Step4:60seconds@150C
+			//Program 2 steps 5-9 are second line
+			//Step5:0seconds@0C,Step6:0seconds@0C,Step7:0seconds@0C,Step8:0seconds@0C,Step9:0seconds@0C
+			//	
+			//Following that on the fifth line, are the stored 'settings' variables which can be changed using Setup or Calibrate functions:
+			//  80 = (1 byte) tc (time constant of the oven heating cycle in seconds.  Default = 20s) Andy changed back to 20s
+			//  81 = (1 byte) temp_units on display (F or C - default: C = 0x01)
+			//  82 = (1 byte) relay_LED  (on or off with relay activation. Default = ON = 0x01)
+			//  83 = (1 byte) t_inc (adjusts the step rate for speed_button from 1 to 10 second/degree steps. Default = 5)
+			//  84 = (1 byte) clock_cal  (adjust the master INTRC clock around 8MHz +/- 2% (the room temp accuracy range) Default = 5)
 
 
 
@@ -79,15 +78,15 @@
 #define D6              porta.2		//Data pin 6 on LCD
 #define D5              porta.1		//Data pin 5 on LCD
 #define D4              porta.0		//Data pin 4 on LCD
-#define LCD_E               porta.7   //operation enable (read/write) signal (strobe)
-#define LCD_R_W             porta.6   //read / write select
-#define LCD_RS              portb.6   //register select
+#define LCD_E               porta.7     //operation enable (read/write) signal (strobe)
+#define LCD_R_W             porta.6     //read / write select
+#define LCD_RS              portb.6     //register select
 
-#define     CLR_DISP        0b00000001 //Clear display
-#define     CUR_HOME        0b00000010    //Move cursor home and clear screen memory
-#define     DISP_ON         0b00001100    //Turn visible LCD on.  Also will turn off cursor and blinking.
-#define     SET_CURSOR      0b10000000    //SET_CURSOR + X : Sets cursor position to X
-#define		CUR_BLNK_ON		0b00001111		//turn on cursor and blinking
+#define     CLR_DISP        0b00000001  //Clear display
+#define     CUR_HOME        0b00000010  //Move cursor home and clear screen memory
+#define     DISP_ON         0b00001100  //Turn visible LCD on.  Also will turn off cursor and blinking.
+#define     SET_CURSOR      0b10000000  //SET_CURSOR + X : Sets cursor position to X
+#define	    CUR_BLNK_ON     0b00001111	//turn on cursor and blinking
 #define BR_CONST  51
 
 
@@ -265,20 +264,20 @@ void main ()
     intcon.7=1;		//enable global interrupts
     intcon.6=1;		//enable peripheral interrupts
 
-    pie1 = 0b00000001;		 //enable timer1 interrupt only
+    pie1 = 0b00000001;	//enable timer1 interrupt only
     t1con.1 = 0;	//use internal oscillator/4 clock
-    tmr1h = 0x9E; //set high byte
-    tmr1l = 0x57; //set low byte but save code space - will be tweaked during the interrupt routine with clock_cal.
+    tmr1h = 0x9E; 	//set high byte
+    tmr1l = 0x57; 	//set low byte but save code space - will be tweaked during the interrupt routine with clock_cal.
         
   	send_cmd(CLR_DISP, TRUE);
-    trisb = 0b10000011;			//set portb pins for inputting button pushes
-    t1con.0 = ON;  //start timer1 operation.  Uses interrupt handler after this.
+    trisb = 0b10000011;	//set portb pins for inputting button pushes
+    t1con.0 = ON;  	//start timer1 operation.  Uses interrupt handler after this.
     //Andy modified state to equal 3 to auto enter Program1 so that all the user needs to do is push CS1 to start the reflow process
-	state = 3; 			//Default is 0, This selects the Case number to enter after the splash screen is displayed. 0="Main Menu", 3="Program1"
+	state = 3; 	//Default is 0, This selects the Case number to enter after the splash screen is displayed. 0="Main Menu", 3="Program1"
     prev_state = 20;	//default starting condition is the main menu state. Set prev_state to a non-existent number to force initialization
-//	cur_pos = 0;		//
+//	cur_pos = 0;	//
 	//Andy modified the prev_mode to equal 3 to set the initial Main Menu selection to Program1
-	prev_mode = 3;			//initialize menu location to initial selection - default is "Manual" = 1, "Program1" = 3
+	prev_mode = 3;	//initialize menu location to initial selection - default is "Manual" = 1, "Program1" = 3
 	button_release = FALSE;
 	choice = 'n';	//select a non-existent button choice to start off.
 
@@ -1339,6 +1338,7 @@ void onboard_eewrite(unsigned char e_data, unsigned char e_address)
 {
     bit temp_intcon = intcon.7;
     
+
     eecon1.7 = 0; //Point to EEPROM data block
      eecon1.4 = 0; //Preform write only  
 
